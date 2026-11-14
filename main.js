@@ -189,7 +189,8 @@
 
   /* ---------- opening animation ---------- */
   const opener = $('#opener');
-  const t0 = performance.now(), MIN = reduce ? 300 : 2100;
+  // The opener always plays in full (a softer fade when the computer has animations turned off)
+  const t0 = performance.now(), MIN = 2700;
   const firstCover = $('.book.is-active img');
   const coverReady = new Promise(r => (firstCover && !firstCover.complete) ? (firstCover.onload = firstCover.onerror = r) : r());
   const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
@@ -197,7 +198,7 @@
     setTimeout(() => {
       opener.classList.add('open');
       document.body.classList.remove('is-loading');
-      setTimeout(() => { opener.classList.add('gone'); document.body.classList.add('ready'); restart(); }, reduce ? 50 : 1300);
+      setTimeout(() => { opener.classList.add('gone'); document.body.classList.add('ready'); restart(); }, reduce ? 900 : 1300);
     }, Math.max(0, MIN - (performance.now() - t0)));
   });
 
