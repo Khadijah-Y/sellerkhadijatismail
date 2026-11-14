@@ -163,5 +163,74 @@
     window.open(url, '_blank', 'noopener');
   });
 
+  /* ---------- leave a review → sent to Khadijat to check before it goes on the site ---------- */
+  const rf = $('#reviewForm'), rErr = $('#reviewErr');
+  let rvia = 'wa';
+  $$('button[type=submit]', rf).forEach(b => b.addEventListener('click', () => { rvia = b.dataset.via; }));
+  rf.addEventListener('input', () => { rErr.textContent = ''; });
+  rf.addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(rf);
+    const name = (fd.get('rname') || '').trim(), text = (fd.get('rtext') || '').trim(), rating = fd.get('rating');
+    if (!name) { rErr.textContent = 'Please add your name.'; rf.rname.focus(); return; }
+    if (!rating) { rErr.textContent = 'Please choose a star rating.'; return; }
+    if (!text) { rErr.textContent = 'Please write a few words about your experience.'; rf.rtext.focus(); return; }
+    if (!fd.get('consent')) { rErr.textContent = 'Please tick the box so I can show your review on the site.'; return; }
+    const msg = [`New website review for Khadijat`, ``, `Name: ${name}`, `Rating: ${'★'.repeat(+rating)}${'☆'.repeat(5 - rating)} (${rating}/5)`, `Service: ${fd.get('rservice')}`, ``, `"${text}"`, ``, `I agree that my name and review can be shown on the website.`].join('\n');
+    const url = rvia === 'wa'
+      ? 'https://wa.me/2349021651449?text=' + encodeURIComponent(msg)
+      : 'mailto:khadijahismail525@gmail.com?subject=' + encodeURIComponent('Website review from ' + name) + '&body=' + encodeURIComponent(msg);
+    rErr.textContent = '';
+    window.open(url, '_blank', 'noopener');
+    $('#reviewOk').hidden = false;
+  });
+
   $('#yr').textContent = new Date().getFullYear();
+
+  /* ---------- opening animation ---------- */
+  const opener = $('#opener');
+  const t0 = performance.now(), MIN = reduce ? 300 : 2100;
+  const firstCover = $('.book.is-active img');
+  const coverReady = new Promise(r => (firstCover && !firstCover.complete) ? (firstCover.onload = firstCover.onerror = r) : r());
+  const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+  Promise.race([Promise.all([coverReady, fontsReady]), new Promise(r => setTimeout(r, 3500))]).then(() => {
+    setTimeout(() => {
+      opener.classList.add('open');
+      document.body.classList.remove('is-loading');
+      setTimeout(() => { opener.classList.add('gone'); document.body.classList.add('ready'); restart(); }, reduce ? 50 : 1300);
+    }, Math.max(0, MIN - (performance.now() - t0)));
+  });
+
+  /* ---------- phones: sticky call bar after the first screen ---------- */
+  const far = () => document.body.classList.toggle('scrolled-far', scrollY > innerHeight * 0.8);
+  addEventListener('scroll', far, { passive: true }); far();
+
+  /* ---------- review pop-ups (real Fiverr reviews) ---------- */
+  const REVIEWS = [
+    { q: 'Very professional book formatting service. The interior layout looks fantastic and reads smoothly on both Kindle and print formats.', n: 'arianatom451 · Repeat client' },
+    { q: 'Excellent work by Khadijat – quick, efficient and concise – will 100% use Khadijat again.', n: 'Allan Cook' },
+    { q: "You're the best Khadijat 👌", n: 'Avelor · Repeat client' },
+    { q: 'The attention to detail really stood out. If you need someone who understands book publishing requirements, this is the right person.', n: 'arianatom451 · Repeat client' },
+    { q: 'Great experience with the seller 🥰', n: 'Avelor · Repeat client' },
+  ];
+  const proof = $('#proof');
+  let pi = 0, pTimer, closed = false;
+  try { closed = sessionStorage.getItem('proofClosed') === '1'; } catch (e) {}
+  const showProof = () => {
+    if (closed || !viewer.hidden) return schedule(8000);
+    const r = REVIEWS[pi++ % REVIEWS.length];
+    $('#proofQuote').textContent = '“' + r.q + '”';
+    $('#proofName').textContent = '— ' + r.n;
+    $('#proofAv').textContent = r.n[0].toUpperCase();
+    proof.classList.add('show');
+    pTimer = setTimeout(() => { proof.classList.remove('show'); schedule(14000); }, 7000);
+  };
+  const schedule = ms => { clearTimeout(pTimer); if (!closed) pTimer = setTimeout(showProof, ms); };
+  $('#proofX').addEventListener('click', () => { closed = true; proof.classList.remove('show'); clearTimeout(pTimer); try { sessionStorage.setItem('proofClosed', '1'); } catch (e) {} });
+  proof.addEventListener('mouseenter', () => clearTimeout(pTimer));
+  proof.addEventListener('mouseleave', () => { if (proof.classList.contains('show')) pTimer = setTimeout(() => { proof.classList.remove('show'); schedule(14000); }, 3000); });
+  schedule(9000);
+
+  /* WhatsApp tip shows once, briefly */
+  setTimeout(() => { const w = $('.fb-wa'); w.classList.add('tip'); setTimeout(() => w.classList.remove('tip'), 3500); }, 5000);
 })();

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khadijatismail.vercel.app/sitemap.xml
+Sitemap: https://sellerkhadijatismail.vercel.app/sitemap.xml
