@@ -11,6 +11,12 @@
   const setMenu = open => { links.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); document.body.style.overflow = open ? 'hidden' : ''; };
   menuBtn.addEventListener('click', () => setMenu(!links.classList.contains('open')));
   $$('a', links).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  // Logo: on the home page, glide back to the top (other pages link home normally)
+  $$('[data-home]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); setMenu(false);
+    scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    history.replaceState(null, '', location.pathname);
+  }));
 
   /* ---------- hero: books rotate like product reveals ---------- */
   const HERO = [
