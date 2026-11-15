@@ -20,6 +20,11 @@
 
   /* ---------- hero: books rotate like product reveals ---------- */
   const HERO = [
+    { img: 'chinese', ar: 0.762, kicker: "Workbook series · Interior & cover", title: 'Chinese Handwriting Practice: The Easy Way' },
+    { img: 'sca', ar: 0.667, kicker: "Medical revision · Interior formatting", title: 'MRCGP: SCA Revision Case Studies' },
+    { img: 'xiamaru', ar: 0.773, kicker: "Coloring book · Concept, interior & cover", title: 'Xi-Amaru Native American Coloring Book' },
+    { img: 'crown', ar: 0.8, kicker: "Children's picture book · Interior & cover", title: 'The Cardboard Crown' },
+    { img: 'lily', ar: 1, kicker: "Children's picture book · Cover & interior", title: 'Lily and the Secret Garden of Wishes' },
     { img: 'becoming', ar: 600 / 900, kicker: 'Self-help · Cover & interior', title: 'The Art of Becoming Unshakeable' },
     { img: 'lost-letter', ar: 590 / 900, kicker: "Children's mystery · Cover & interior", title: 'The Lost Letter Project' },
     { img: 'silk', ar: 600 / 900, kicker: 'Lifestyle guide · Cover & interior', title: 'Silk & Sunshine' },

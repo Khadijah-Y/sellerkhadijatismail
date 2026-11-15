@@ -148,6 +148,7 @@ h3{font-size:26px}
 .card{text-align:left;color:var(--text-l);display:block;width:100%}
 .card.hide{display:none}
 .card .thumb{position:relative;display:block;width:100%;padding:0;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:var(--ivory-2);box-shadow:0 20px 40px -28px rgba(22,19,15,.5)}
+.card .badge-new{background:var(--gold);color:var(--ink);font-weight:700}
 .pdf-link{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;color:var(--gold-d);border-bottom:1px solid rgba(154,122,46,.35)}
 .pdf-link:hover{border-color:var(--gold-d)}
 .card .thumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
