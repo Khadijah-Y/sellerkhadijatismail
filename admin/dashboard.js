@@ -76,7 +76,7 @@
   };
   const content = name => (user() && user().token)
     ? gh(`/contents/content/${name}.json?ref=${BRANCH}&t=${Date.now()}`, true)
-    : fetch(`dev-content/${name}.json?t=${Date.now()}`).then(r => r.json());
+    : fetch(`/admin/dev-content/${name}.json?t=${Date.now()}`).then(r => r.json());
 
   let D = null, RANGE = 'week';
   async function loadData() {
@@ -353,7 +353,7 @@
       $('#pageTitle').textContent = ROUTES[v][0];
       document.title = ROUTES[v][0] + ' · Website admin';
       $('#dashboard').hidden = true; $('#editorView').hidden = false;
-      const target = 'editor/#/' + ROUTES[v][1];
+      const target = '/admin/editor/#/' + ROUTES[v][1];
       if (!frame.getAttribute('src')) frame.src = target;
       else try { frame.contentWindow.location.hash = '#/' + ROUTES[v][1]; } catch (e) { frame.src = target; }
     } else {
