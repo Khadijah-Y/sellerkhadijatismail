@@ -19,19 +19,10 @@
   }));
 
   /* ---------- hero: books rotate like product reveals ---------- */
-  const HERO = [
-    { img: 'chinese', ar: 0.762, kicker: "Workbook series · Interior & cover", title: 'Chinese Handwriting Practice: The Easy Way' },
-    { img: 'sca', ar: 0.667, kicker: "Medical revision · Interior formatting", title: 'MRCGP: SCA Revision Case Studies' },
-    { img: 'xiamaru', ar: 0.773, kicker: "Coloring book · Concept, interior & cover", title: 'Xi-Amaru Native American Coloring Book' },
-    { img: 'crown', ar: 0.8, kicker: "Children's picture book · Interior & cover", title: 'The Cardboard Crown' },
-    { img: 'lily', ar: 1, kicker: "Children's picture book · Cover & interior", title: 'Lily and the Secret Garden of Wishes' },
-    { img: 'becoming', ar: 600 / 900, kicker: 'Self-help · Cover & interior', title: 'The Art of Becoming Unshakeable' },
-    { img: 'lost-letter', ar: 590 / 900, kicker: "Children's mystery · Cover & interior", title: 'The Lost Letter Project' },
-    { img: 'silk', ar: 600 / 900, kicker: 'Lifestyle guide · Cover & interior', title: 'Silk & Sunshine' },
-    { img: 'truth-ai', ar: 600 / 900, kicker: 'Nonfiction · Cover & interior', title: 'Truth in the Era of AI' },
-    { img: 'clinical', ar: 637 / 900, kicker: 'Medical · English edition', title: 'Clinical Nutrition in Dentistry' },
-    { img: 'beauty', ar: 696 / 900, kicker: 'Workbook · Cover & interior', title: 'Beauty Blueprint Workbook' },
-  ];
+  /* All editable data (hero books, pop-up reviews, contact numbers) comes from the CMS via window.SITE */
+  const SITE = window.SITE || {};
+  const WA = SITE.whatsapp || '2349021651449', MAIL = SITE.email || 'khadijahismail525@gmail.com', FIRST = SITE.first || 'Khadijat';
+  const HERO = SITE.hero || [];
   const DUR = 4200;
   const booksEl = $('#books'), dotsEl = $('#dots'), heroBg = $('#heroBg');
   const cap = $('.stage-caption'), capK = $('#capKicker'), capT = $('#capTitle');
@@ -39,7 +30,8 @@
     const el = document.createElement('div');
     el.className = 'book is-hidden';
     el.style.setProperty('--ar', b.ar);
-    el.innerHTML = `<div class="front"><img src="assets/covers/${b.img}.webp" alt="${b.title} book cover" ${i > 1 ? 'loading="lazy"' : ''}></div><div class="pages"></div>`;
+    el.innerHTML = `<div class="front"><img src="${b.cover}" alt="" ${i > 1 ? 'loading="lazy"' : ''}></div><div class="pages"></div>`;
+    $('img', el).alt = b.title + ' book cover';
     booksEl.appendChild(el);
     const d = document.createElement('button');
     d.setAttribute('role', 'tab'); d.setAttribute('aria-label', b.title); d.innerHTML = '<i></i>';
@@ -51,6 +43,7 @@
   let cur = -1, timer;
   function go(i) {
     const n = HERO.length;
+    if (!n) return;
     cur = (i + n) % n;
     bookEls.forEach((el, k) => {
       el.className = 'book ' + (k === cur ? 'is-active' : k === (cur + 1) % n ? 'is-next' : k === (cur - 1 + n) % n ? 'is-prev' : 'is-hidden');
@@ -58,7 +51,7 @@
     $$('button', dotsEl).forEach((d, k) => { d.classList.remove('on'); void d.offsetWidth; d.classList.toggle('on', k === cur); d.setAttribute('aria-selected', k === cur); });
     cap.classList.add('swap');
     setTimeout(() => { capK.textContent = HERO[cur].kicker; capT.textContent = HERO[cur].title; cap.classList.remove('swap'); }, 380);
-    heroBg.style.backgroundImage = `url(assets/covers/${HERO[cur].img}.webp)`;
+    heroBg.style.backgroundImage = `url("${HERO[cur].cover}")`;
   }
   // With reduced motion the books still change, but as a gentle cross-fade (see CSS)
   const restart = () => { clearInterval(timer); timer = setInterval(() => go(cur + 1), reduce ? DUR * 1.5 : DUR); };
@@ -82,10 +75,15 @@
   /* ---------- work grid + viewer ---------- */
   /* cards are in the HTML (good for search engines); read their data from it */
   const grid = $('#grid');
-  const WORK = $$('.card', grid).map(c => ({
-    id: c.dataset.id, n: +c.dataset.n, pdf: c.dataset.pdf,
-    t: $('h3', c).textContent, k: $('.k', c).textContent, d: $('.meta p', c).textContent,
-  }));
+  const WORK = $$('.card', grid).map(c => {
+    let slides = [];
+    try { slides = JSON.parse(c.dataset.slides || '[]'); } catch (e) {}
+    return {
+      id: c.dataset.id, pdf: c.dataset.pdf, slides, strip: c.dataset.strip,
+      n: slides.length || +c.dataset.n || 0,
+      t: $('h3', c).textContent, k: $('.k', c).textContent, d: $('.meta p', c).textContent,
+    };
+  });
   $$('.card', grid).forEach((c, i) => $('.thumb', c).addEventListener('click', e => openViewer(i, e.currentTarget)));
   $$('#filters button').forEach(btn => btn.addEventListener('click', () => {
     $$('#filters button').forEach(x => x.classList.toggle('on', x === btn));
@@ -96,20 +94,25 @@
   const viewer = $('#viewer'), vImg = $('#vImg');
   let vw = null, vs = 0, lastFocus = null;
   function show() {
-    // all slides of a case live in one tall image; show one slice of it
-    const src = `assets/work/${vw.id}-slides.webp`;
+    // Either a list of separate slide images (added in the admin), or one tall image holding all slides
+    const single = vw.slides.length > 0;
+    const src = single ? vw.slides[vs] : vw.strip;
+    vImg.classList.toggle('single', single);
     if (vImg.dataset.src !== src) {
       vImg.classList.add('load'); vImg.dataset.src = src;
-      const pre = new Image(); pre.onload = () => { vImg.style.backgroundImage = `url(${src})`; vImg.classList.remove('load'); }; pre.src = src;
+      const pre = new Image(); pre.onload = () => { if (vImg.dataset.src === src) { vImg.style.backgroundImage = `url("${src}")`; vImg.classList.remove('load'); } }; pre.src = src;
     }
-    vImg.style.backgroundPosition = `0 ${vw.n > 1 ? (vs / (vw.n - 1)) * 100 : 0}%`;
+    vImg.style.backgroundPosition = single ? 'center' : `0 ${vw.n > 1 ? (vs / (vw.n - 1)) * 100 : 0}%`;
     vImg.setAttribute('aria-label', `${vw.t}, slide ${vs + 1} of ${vw.n}`);
     $('#vCount').textContent = `${String(vs + 1).padStart(2, '0')} / ${String(vw.n).padStart(2, '0')}`;
   }
   function openViewer(i, from) {
     vw = WORK[i]; vs = 0; lastFocus = from;
+    // No slides yet? Open the case study PDF instead.
+    if (!vw.n || (!vw.slides.length && !vw.strip)) { if (vw.pdf) window.open(vw.pdf, '_blank', 'noopener'); return; }
     $('#vTitle').textContent = vw.t; $('#vKicker').textContent = `${vw.k} · ${vw.d}`;
-    $('#vPdf').href = 'case-studies/' + vw.pdf;
+    $('#vPdf').href = vw.pdf;
+    $('#vPdf').hidden = !vw.pdf;
     viewer.hidden = false; document.body.style.overflow = 'hidden'; show(); $('#vClose').focus();
   }
   function closeViewer() { viewer.hidden = true; document.body.style.overflow = ''; lastFocus && lastFocus.focus(); }
@@ -160,7 +163,7 @@
     if (!name) { err.textContent = 'Please add your name first.'; form.name.focus(); return; }
     const fmts = fd.getAll('fmt').join(', ') || 'Not sure';
     const lines = [
-      `Hi Khadijat, I'd like a quote.`, ``,
+      `Hi ${FIRST}, I'd like a quote.`, ``,
       `Name: ${name}`,
       fd.get('title') ? `Book: ${fd.get('title')}` : '',
       `Service: ${fd.get('service')}`,
@@ -169,8 +172,8 @@
       fd.get('msg') ? `\n${fd.get('msg')}` : '',
     ].filter(Boolean).join('\n');
     const url = via === 'wa'
-      ? 'https://wa.me/2349021651449?text=' + encodeURIComponent(lines)
-      : 'mailto:khadijahismail525@gmail.com?subject=' + encodeURIComponent('Book project quote: ' + (fd.get('title') || name)) + '&body=' + encodeURIComponent(lines);
+      ? `https://wa.me/${WA}?text=` + encodeURIComponent(lines)
+      : `mailto:${MAIL}?subject=` + encodeURIComponent('Book project quote: ' + (fd.get('title') || name)) + '&body=' + encodeURIComponent(lines);
     window.open(url, '_blank', 'noopener');
   });
 
@@ -187,10 +190,10 @@
     if (!rating) { rErr.textContent = 'Please choose a star rating.'; return; }
     if (!text) { rErr.textContent = 'Please write a few words about your experience.'; rf.rtext.focus(); return; }
     if (!fd.get('consent')) { rErr.textContent = 'Please tick the box so I can show your review on the site.'; return; }
-    const msg = [`New website review for Khadijat`, ``, `Name: ${name}`, `Rating: ${'★'.repeat(+rating)}${'☆'.repeat(5 - rating)} (${rating}/5)`, `Service: ${fd.get('rservice')}`, ``, `"${text}"`, ``, `I agree that my name and review can be shown on the website.`].join('\n');
+    const msg = [`New website review for ${FIRST}`, ``, `Name: ${name}`, `Rating: ${'★'.repeat(+rating)}${'☆'.repeat(5 - rating)} (${rating}/5)`, `Service: ${fd.get('rservice')}`, ``, `"${text}"`, ``, `I agree that my name and review can be shown on the website.`].join('\n');
     const url = rvia === 'wa'
-      ? 'https://wa.me/2349021651449?text=' + encodeURIComponent(msg)
-      : 'mailto:khadijahismail525@gmail.com?subject=' + encodeURIComponent('Website review from ' + name) + '&body=' + encodeURIComponent(msg);
+      ? `https://wa.me/${WA}?text=` + encodeURIComponent(msg)
+      : `mailto:${MAIL}?subject=` + encodeURIComponent('Website review from ' + name) + '&body=' + encodeURIComponent(msg);
     rErr.textContent = '';
     window.open(url, '_blank', 'noopener');
     $('#reviewOk').hidden = false;
@@ -218,17 +221,12 @@
   addEventListener('scroll', far, { passive: true }); far();
 
   /* ---------- review pop-ups (real Fiverr reviews) ---------- */
-  const REVIEWS = [
-    { q: 'Very professional book formatting service. The interior layout looks fantastic and reads smoothly on both Kindle and print formats.', n: 'arianatom451 · Repeat client' },
-    { q: 'Excellent work by Khadijat – quick, efficient and concise – will 100% use Khadijat again.', n: 'Allan Cook' },
-    { q: "You're the best Khadijat 👌", n: 'Avelor · Repeat client' },
-    { q: 'The attention to detail really stood out. If you need someone who understands book publishing requirements, this is the right person.', n: 'arianatom451 · Repeat client' },
-    { q: 'Great experience with the seller 🥰', n: 'Avelor · Repeat client' },
-  ];
+  const REVIEWS = SITE.popups || [];
   const proof = $('#proof');
   let pi = 0, pTimer, closed = false;
   try { closed = sessionStorage.getItem('proofClosed') === '1'; } catch (e) {}
   const showProof = () => {
+    if (!REVIEWS.length) return;
     if (closed || !viewer.hidden) return schedule(8000);
     const r = REVIEWS[pi++ % REVIEWS.length];
     $('#proofQuote').textContent = '“' + r.q + '”';

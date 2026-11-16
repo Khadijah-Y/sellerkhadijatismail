@@ -1,0 +1,81 @@
+{
+  "services": [
+    {
+      "title": "Book formatting & typesetting",
+      "text": "Professional interior layout for paperback, hardcover and ebook, built to the requirements of Amazon KDP, IngramSpark and other platforms.",
+      "points": [
+        "Trim size, margins, bleed & gutters",
+        "Chapter openers, headers & page numbers",
+        "Clickable contents for ebooks",
+        "Print PDF + EPUB / Kindle files"
+      ],
+      "page": "book-formatting",
+      "tag": "",
+      "dark": false
+    },
+    {
+      "title": "Proofreading",
+      "text": "A careful final check of your manuscript for spelling, grammar, punctuation, typos and small consistency issues before publication.",
+      "points": [
+        "Spelling, grammar & punctuation",
+        "Typos and repeated words",
+        "Consistent names, numbers & style",
+        "Tracked changes you approve"
+      ],
+      "page": "proofreading",
+      "tag": "",
+      "dark": false
+    },
+    {
+      "title": "Copy editing",
+      "text": "Clearer, smoother sentences. I improve structure, clarity, readability, grammar and consistency while keeping your voice and your meaning.",
+      "points": [
+        "Sentence flow and clarity",
+        "Grammar and word choice",
+        "Consistency across chapters",
+        "Your voice, kept intact"
+      ],
+      "page": "copy-editing",
+      "tag": "",
+      "dark": false
+    },
+    {
+      "title": "Book cover design",
+      "text": "Covers that look at home next to bestsellers in your genre, designed to stand out as a tiny thumbnail and on the shelf.",
+      "points": [
+        "Ebook front cover",
+        "Full print wrap: front, spine & back",
+        "Exact KDP & IngramSpark sizing",
+        "3D mockups for your launch"
+      ],
+      "page": "book-cover-design",
+      "tag": "",
+      "dark": false
+    },
+    {
+      "title": "Book translation",
+      "text": "Reach English-speaking readers. I translate your book from its original language into polished English, in the variety your readers use, and rebuild the layout so the new edition is ready to publish.",
+      "points": [
+        "Into American, British or Canadian English",
+        "Natural, faithful to your voice",
+        "Original formatting kept",
+        "Print and ebook ready"
+      ],
+      "page": "book-translation",
+      "tag": "",
+      "dark": false
+    },
+    {
+      "title": "Developmental editing",
+      "text": "A big-picture look at plot, pacing, structure, character development and overall flow. Available as an add-on or on its own, for projects within my areas of expertise.",
+      "points": [
+        "Structure and pacing",
+        "Character and argument flow",
+        "Written editorial report"
+      ],
+      "page": "developmental-editing",
+      "tag": "Selected projects",
+      "dark": true
+    }
+  ]
+}

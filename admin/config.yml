@@ -1,0 +1,384 @@
+# Website admin (Decap CMS). Every "Publish" saves to GitHub, then Vercel rebuilds the site (about 1 minute).
+backend:
+  name: github
+  repo: Khadijah-Y/sellerkhadijatismail
+  branch: main
+  base_url: https://sellerkhadijatismail.vercel.app
+  auth_endpoint: api/auth
+  commit_messages:
+    create: "Add {{collection}} “{{slug}}” (admin)"
+    update: "Update {{collection}} “{{slug}}” (admin)"
+    delete: "Delete {{collection}} “{{slug}}” (admin)"
+    uploadMedia: "Upload “{{path}}” (admin)"
+    deleteMedia: "Delete “{{path}}” (admin)"
+
+# For testing on this computer only (npx decap-server); ignored on the live site
+local_backend: true
+
+site_url: https://sellerkhadijatismail.vercel.app
+display_url: https://sellerkhadijatismail.vercel.app
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  # ------------------------------------------------------------------ PORTFOLIO
+  - name: portfolio
+    label: Portfolio & case studies
+    description: "Add, edit, reorder or delete the books in your portfolio grid and hero. Drag items to change their order on the site."
+    editor: { preview: false }
+    files:
+      - name: portfolio
+        label: Portfolio projects
+        file: content/portfolio.json
+        fields:
+          - label: Projects
+            name: items
+            widget: list
+            label_singular: project
+            summary: "{{fields.title}}  ·  {{fields.category}}"
+            add_to_top: true
+            collapsed: true
+            fields:
+              - { label: Book title, name: title, widget: string }
+              - { label: Short ID, hint: "Lowercase, no spaces, e.g. my-new-book", name: id, widget: string, pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only"] }
+              - { label: Category, hint: "Small label above the title, e.g. Children's picture book", name: category, widget: string }
+              - { label: One-line description, hint: "e.g. Cover design & interior layout", name: description, widget: string }
+              - label: Filter groups
+                name: filters
+                widget: select
+                multiple: true
+                required: false
+                options:
+                  - { label: "Self-help & nonfiction", value: nonfiction }
+                  - { label: Workbooks, value: workbook }
+                  - { label: "Cookbooks & guides", value: guide }
+                  - { label: "Fiction & children's", value: fiction }
+              - { label: Collaboration project, hint: "Shows the Collaboration badge", name: collaboration, widget: boolean, default: false, required: false }
+              - { label: "“New” badge", name: new, widget: boolean, default: false, required: false }
+              - { label: Card image, hint: "16:9, about 1640 × 922 px", name: thumbnail, widget: image }
+              - { label: Case study PDF, name: pdf, widget: file, required: false, media_library: { config: { multiple: false } } }
+              - label: Slides
+                hint: "16:9 images, in order. Leave empty and the card opens the PDF instead."
+                name: slides
+                widget: list
+                required: false
+                field: { label: Slide, name: image, widget: image }
+              - { label: Show in hero, hint: "Adds this book to the rotating covers at the top of the home page", name: show_in_hero, widget: boolean, default: false, required: false }
+              - { label: Hero position, hint: "1 = first. Leave 0 to follow the grid order", name: hero_order, widget: number, value_type: int, default: 0, required: false }
+              - { label: Hero cover image, hint: "Flat front cover", name: cover, widget: image, required: false }
+              - { label: Hero cover shape, hint: "Width ÷ height: 6x9 = 0.667, 8x10 = 0.8, square = 1", name: cover_ratio, widget: number, value_type: float, step: 0.001, default: 0.667, required: false }
+              - { label: Hero caption, hint: "e.g. Self-help · Cover & interior", name: hero_caption, widget: string, required: false }
+              - { label: "Advanced: slide strip", hint: "Older projects only: all slides in one tall image", name: slides_strip, widget: string, required: false }
+              - { label: "Advanced: slides in strip", name: slide_count, widget: number, value_type: int, default: 0, required: false }
+
+  # ------------------------------------------------------------------ REVIEWS
+  - name: reviews
+    label: Reviews
+    editor: { preview: false }
+    files:
+      - name: reviews
+        label: Reviews & pop-ups
+        file: content/reviews.json
+        fields:
+          - label: Reviews section
+            name: reviews
+            widget: list
+            label_singular: review
+            summary: "{{fields.name}}: {{fields.quote}}"
+            collapsed: true
+            fields:
+              - { label: Review text (without quote marks), name: quote, widget: text }
+              - { label: Client name, name: name, widget: string }
+              - { label: "Details (e.g. Repeat client · Fiverr · March 2026)", name: details, widget: string, required: false }
+              - { label: "Tags (optional, e.g. Book formatting · Ebook)", name: tags, widget: string, required: false }
+              - { label: Star rating, name: rating, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+              - { label: "Large card (featured)", name: featured, widget: boolean, default: false, required: false }
+          - label: Review pop-ups (bottom corner of the home page)
+            name: popups
+            widget: list
+            label_singular: pop-up
+            summary: "{{fields.name}}: {{fields.quote}}"
+            collapsed: true
+            fields:
+              - { label: Short quote, name: quote, widget: text }
+              - { label: "Name line (e.g. Allan Cook · Repeat client)", name: name, widget: string }
+
+  # ------------------------------------------------------------------ HOME PAGE
+  - name: home
+    label: Home page
+    description: "Text tips: *word* = gold italic · **word** = bold · a new line = line break."
+    editor: { preview: false }
+    files:
+      - name: home
+        label: Home page sections
+        file: content/home.json
+        fields:
+          - label: Hero (top of the page)
+            name: hero
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label above the title, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: text }
+              - { label: Intro paragraph, name: lead, widget: text }
+              - { label: Gold button text, name: button_primary, widget: string }
+              - { label: Second button text, name: button_secondary, widget: string }
+              - { label: Proof points under the buttons, name: proof, widget: list, field: { label: Point, name: point, widget: string } }
+          - label: Platforms strip
+            name: platforms
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: Platforms, name: items, widget: list, field: { label: Platform, name: item, widget: string } }
+          - label: Services section heading
+            name: services_section
+            widget: object
+            collapsed: true
+            fields: &head
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - { label: Subheading, name: subtitle, widget: text, required: false }
+          - label: Before / after slider
+            name: compare
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - { label: Text, name: text, widget: text }
+              - { label: Credit line, name: credit, widget: string, required: false }
+              - { label: "Before image (same size as the after image)", name: before_image, widget: image }
+              - { label: After image, name: after_image, widget: image }
+          - { label: Portfolio section heading, name: work_section, widget: object, collapsed: true, fields: *head }
+          - label: About me
+            name: about
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Greeting, name: hello, widget: string }
+              - { label: Role line, name: role, widget: string }
+              - { label: Paragraphs, name: paragraphs, widget: list, field: { label: Paragraph, name: paragraph, widget: text } }
+              - { label: Photo, name: photo, widget: image }
+              - { label: Badge number, name: badge_number, widget: string }
+              - { label: Badge text, name: badge_text, widget: text }
+              - label: Counters
+                name: counters
+                widget: list
+                summary: "{{fields.number}}{{fields.suffix}} {{fields.label}}"
+                fields:
+                  - { label: Number, name: number, widget: number, value_type: float, default: 0 }
+                  - { label: "Suffix (e.g. +)", name: suffix, widget: string, required: false }
+                  - { label: Decimal places, name: decimals, widget: number, value_type: int, default: 0 }
+                  - { label: Label, name: label, widget: string }
+                  - { label: "Count the portfolio projects automatically", name: auto_case_studies, widget: boolean, default: false, required: false }
+          - label: How it works
+            name: process
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - label: Steps
+                name: steps
+                widget: list
+                summary: "{{fields.title}}"
+                fields: &titletext
+                  - { label: Title, name: title, widget: string }
+                  - { label: Text, name: text, widget: text }
+          - label: Reviews section heading
+            name: reviews_section
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - { label: Subheading, name: subtitle, widget: text, required: false }
+              - { label: Link text under the reviews, name: more_link_text, widget: string }
+          - label: Leave a review
+            name: leave_review
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - { label: Text, name: subtitle, widget: text }
+              - { label: Points, name: points, widget: list, field: { label: Point, name: point, widget: string } }
+          - { label: FAQ section heading, name: faq_section, widget: object, collapsed: true, fields: *head }
+          - label: Contact section
+            name: contact
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - { label: Text, name: subtitle, widget: text }
+              - label: Contact rows
+                name: rows
+                widget: list
+                summary: "{{fields.label}}: {{fields.value}}"
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Value, name: value, widget: text }
+                  - { label: "Link (optional: https://… or mailto:…)", name: link, widget: string, required: false }
+          - label: Final call to action
+            name: final_cta
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Small label, name: eyebrow, widget: string }
+              - { label: Heading, name: title, widget: text }
+              - { label: Text, name: subtitle, widget: text }
+              - { label: Small note, name: note, widget: string }
+
+  # ------------------------------------------------------------------ SERVICES (home page cards)
+  - name: services
+    label: Services (home page cards)
+    editor: { preview: false }
+    files:
+      - name: services
+        label: Service cards
+        file: content/services.json
+        fields:
+          - label: Services
+            name: services
+            widget: list
+            label_singular: service
+            summary: "{{fields.title}}"
+            collapsed: true
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+              - { label: Bullet points, name: points, widget: list, field: { label: Point, name: point, widget: string } }
+              - label: "“Learn more” page (optional)"
+                name: page
+                widget: relation
+                collection: service_pages
+                file: service_pages
+                search_fields: ["pages.*.menu_name"]
+                display_fields: ["pages.*.menu_name"]
+                value_field: "pages.*.slug"
+                required: false
+              - { label: "Small tag (optional)", name: tag, widget: string, required: false }
+              - { label: Dark card, name: dark, widget: boolean, default: false, required: false }
+
+  # ------------------------------------------------------------------ FAQ
+  - name: faq
+    label: FAQ (home page)
+    editor: { preview: false }
+    files:
+      - name: faq
+        label: Questions
+        file: content/faq.json
+        fields:
+          - label: Questions
+            name: questions
+            widget: list
+            label_singular: question
+            summary: "{{fields.question}}"
+            collapsed: true
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: Answer, name: answer, widget: text }
+
+  # ------------------------------------------------------------------ SERVICE PAGES
+  - name: service_pages
+    label: Service pages
+    description: "Each item is its own page (e.g. /book-formatting) and appears in the footer menu. Text tips: *word* = gold italic, **word** = bold."
+    editor: { preview: false }
+    files:
+      - name: service_pages
+        label: Service pages
+        file: content/service_pages.json
+        fields:
+          - label: Pages
+            name: pages
+            widget: list
+            label_singular: page
+            summary: "{{fields.menu_name}}  ·  /{{fields.slug}}"
+            collapsed: true
+            fields:
+              - { label: "Web address (e.g. book-formatting). Changing it changes the page link.", name: slug, widget: string, pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only"] }
+              - { label: Name in menus, name: menu_name, widget: string }
+              - { label: Service name (for Google), name: service, widget: string }
+              - { label: Google title, name: seo_title, widget: string }
+              - { label: Google description, name: seo_description, widget: text }
+              - { label: Small label above the title, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: text }
+              - { label: Intro paragraph, name: lead, widget: text }
+              - label: Top image
+                name: visual
+                widget: object
+                fields:
+                  - { label: Style, name: style, widget: select, options: [ { label: "Book page", value: page }, { label: Photo, value: photo }, { label: "Stack of covers (up to 3)", value: covers } ] }
+                  - { label: Images, name: images, widget: list, field: { label: Image, name: image, widget: image } }
+                  - { label: Image description, name: alt, widget: string }
+              - { label: "“What I offer” heading", name: offers_title, widget: string }
+              - { label: "“What I offer” text", name: offers_subtitle, widget: text }
+              - { label: Offers, name: offers, widget: list, summary: "{{fields.title}}", fields: *titletext }
+              - { label: "Quality heading", name: why_title, widget: string }
+              - { label: Quality points, name: why, widget: list, summary: "{{fields.title}}", fields: *titletext }
+              - { label: "Checklist heading", name: checks_title, widget: string }
+              - label: Checklists
+                name: checks
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Items, name: items, widget: list, field: { label: Item, name: item, widget: string } }
+              - label: Projects to show
+                name: projects
+                widget: relation
+                collection: portfolio
+                file: portfolio
+                search_fields: ["items.*.title"]
+                display_fields: ["items.*.title"]
+                value_field: "items.*.id"
+                multiple: true
+                required: false
+              - { label: "“Who this is for” points", name: who, widget: list, field: { label: Point, name: point, widget: string } }
+              - label: FAQ
+                name: faq
+                widget: list
+                summary: "{{fields.question}}"
+                fields:
+                  - { label: Question, name: question, widget: string }
+                  - { label: Answer, name: answer, widget: text }
+              - label: Service pre-selected in the quote form
+                name: form_service
+                widget: select
+                options: ['Formatting & typesetting', 'Proofreading', 'Copy editing', 'Cover design', 'Translation', 'Developmental editing', 'Several of these', 'Not sure yet']
+          - label: '"How it works" steps (shared by all service pages)'
+            name: steps
+            widget: list
+            summary: "{{fields.title}}"
+            fields: *titletext
+
+  # ------------------------------------------------------------------ SETTINGS
+  - name: settings
+    label: Settings & contact details
+    editor: { preview: false }
+    files:
+      - name: settings
+        label: Site settings
+        file: content/settings.json
+        fields:
+          - { label: Your name, name: name, widget: string }
+          - { label: Logo letters, name: monogram, widget: string }
+          - { label: Role, name: role, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: "WhatsApp number (digits only, with country code, e.g. 2349021651449)", name: whatsapp_number, widget: string, pattern: ['^[0-9]+$', "Digits only"] }
+          - { label: WhatsApp number as shown, name: whatsapp_display, widget: string }
+          - { label: Calendly link, name: calendly, widget: string }
+          - { label: Fiverr link (leave empty to hide), name: fiverr, widget: string, required: false }
+          - { label: Upwork link (leave empty to hide), name: upwork, widget: string, required: false }
+          - { label: LinkedIn link (leave empty to hide), name: linkedin, widget: string, required: false }
+          - { label: LinkedIn name shown, name: linkedin_label, widget: string, required: false }
+          - { label: Instagram link (leave empty to hide), name: instagram, widget: string, required: false }
+          - { label: Footer text, name: footer_about, widget: text }
+          - { label: Footer small note, name: footer_note, widget: string, required: false }
+          - { label: Google title (home page), name: seo_title, widget: string }
+          - { label: Google description (home page), name: seo_description, widget: text }
+          - { label: Website address, name: site_url, widget: string }
+          - { label: Google Search Console code, name: google_verification, widget: string, required: false }

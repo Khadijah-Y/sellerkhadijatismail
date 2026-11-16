@@ -1,0 +1,4 @@
+# Built by build/render.py on Vercel — never commit it
+public/
+__pycache__/
+*.bak

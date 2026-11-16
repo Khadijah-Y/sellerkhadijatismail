@@ -36,13 +36,14 @@
       e.preventDefault();
       const fd = new FormData(form), name = (fd.get('name') || '').trim();
       if (!name) { err.textContent = 'Please add your name first.'; form.querySelector('[name=name]').focus(); return; }
-      const lines = [`Hi Khadijat, I'd like a quote.`, ``, `Name: ${name}`,
+      const S = window.SITE || {};
+      const lines = [`Hi ${S.first || 'Khadijat'}, I'd like a quote.`, ``, `Name: ${name}`,
         fd.get('title') ? `Book: ${fd.get('title')}` : '', `Service: ${fd.get('service')}`,
         fd.get('words') ? `Word count: ${fd.get('words')}` : '', `Formats: ${fd.getAll('fmt').join(', ') || 'Not sure'}`,
         fd.get('msg') ? `\n${fd.get('msg')}` : ''].filter(Boolean).join('\n');
       const url = via === 'wa'
-        ? 'https://wa.me/2349021651449?text=' + encodeURIComponent(lines)
-        : 'mailto:khadijahismail525@gmail.com?subject=' + encodeURIComponent('Book project quote: ' + (fd.get('title') || name)) + '&body=' + encodeURIComponent(lines);
+        ? `https://wa.me/${S.whatsapp || '2349021651449'}?text=` + encodeURIComponent(lines)
+        : `mailto:${S.email || 'khadijahismail525@gmail.com'}?subject=` + encodeURIComponent('Book project quote: ' + (fd.get('title') || name)) + '&body=' + encodeURIComponent(lines);
       err.textContent = '';
       window.open(url, '_blank', 'noopener');
     });

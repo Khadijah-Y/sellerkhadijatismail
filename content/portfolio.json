@@ -1,0 +1,467 @@
+{
+  "items": [
+    {
+      "title": "Soul Sneakers: Passport to Play",
+      "id": "soul-sneakers",
+      "category": "Children's chapter book",
+      "description": "Interior reformat · collaboration",
+      "filters": [
+        "fiction"
+      ],
+      "collaboration": true,
+      "new": true,
+      "thumbnail": "/assets/work/soul-sneakers-thumb.webp",
+      "pdf": "/case-studies/soul-sneakers-case-study-interior.pdf",
+      "slides_strip": "/assets/work/soul-sneakers-slides.webp",
+      "slide_count": 7,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Chinese Handwriting Practice: The Easy Way",
+      "id": "chinese",
+      "category": "Language workbook series",
+      "description": "Interior and cover design, Books 1 and 2",
+      "filters": [
+        "workbook"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/chinese-thumb.webp",
+      "pdf": "/case-studies/chinese-handwriting-practice-case-study.pdf",
+      "slides_strip": "/assets/work/chinese-slides.webp",
+      "slide_count": 8,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/chinese.webp",
+      "cover_ratio": 0.762,
+      "hero_caption": "Workbook series · Interior & cover",
+      "hero_order": 1
+    },
+    {
+      "title": "MRCGP: SCA Revision Case Studies",
+      "id": "sca",
+      "category": "Medical exam revision",
+      "description": "Interior formatting for ebook and paperback",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/sca-thumb.webp",
+      "pdf": "/case-studies/mrcgp-sca-revision-case-studies-case-study.pdf",
+      "slides_strip": "/assets/work/sca-slides.webp",
+      "slide_count": 8,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/sca.webp",
+      "cover_ratio": 0.667,
+      "hero_caption": "Medical revision · Interior formatting",
+      "hero_order": 2
+    },
+    {
+      "title": "Xi-Amaru Native American Coloring Book",
+      "id": "xiamaru",
+      "category": "Coloring book",
+      "description": "Concept, interior and cover design",
+      "filters": [
+        "fiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/xiamaru-thumb.webp",
+      "pdf": "/case-studies/xi-amaru-coloring-book-case-study.pdf",
+      "slides_strip": "/assets/work/xiamaru-slides.webp",
+      "slide_count": 10,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/xiamaru.webp",
+      "cover_ratio": 0.773,
+      "hero_caption": "Coloring book · Concept, interior & cover",
+      "hero_order": 3
+    },
+    {
+      "title": "The Cardboard Crown",
+      "id": "crown",
+      "category": "Children's picture book",
+      "description": "Interior reformat, proofreading and cover",
+      "filters": [
+        "fiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/crown-thumb.webp",
+      "pdf": "/case-studies/the-cardboard-crown-case-study.pdf",
+      "slides_strip": "/assets/work/crown-slides.webp",
+      "slide_count": 10,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/crown.webp",
+      "cover_ratio": 0.8,
+      "hero_caption": "Children's picture book · Interior & cover",
+      "hero_order": 4
+    },
+    {
+      "title": "Lily and the Secret Garden of Wishes",
+      "id": "lily",
+      "category": "Children's picture book",
+      "description": "Cover design, interior layout and mockups",
+      "filters": [
+        "fiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/lily-thumb.webp",
+      "pdf": "/case-studies/lily-and-the-secret-garden-of-wishes-case-study.pdf",
+      "slides_strip": "/assets/work/lily-slides.webp",
+      "slide_count": 9,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/lily.webp",
+      "cover_ratio": 1,
+      "hero_caption": "Children's picture book · Cover & interior",
+      "hero_order": 5
+    },
+    {
+      "title": "The Art of Becoming Unshakeable",
+      "id": "becoming",
+      "category": "Self-help",
+      "description": "Cover design and interior formatting",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/becoming-thumb.webp",
+      "pdf": "/case-studies/the-art-of-becoming-unshakeable-case-study.pdf",
+      "slides_strip": "/assets/work/becoming-slides.webp",
+      "slide_count": 10,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/becoming.webp",
+      "cover_ratio": 0.667,
+      "hero_caption": "Self-help · Cover & interior",
+      "hero_order": 6
+    },
+    {
+      "title": "Clinical Nutrition in Dentistry",
+      "id": "clinical",
+      "category": "Medical · English edition",
+      "description": "Italian-to-English edition, formatting and cover",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/clinical-thumb.webp",
+      "pdf": "/case-studies/clinical-nutrition-in-dentistry-case-study.pdf",
+      "slides_strip": "/assets/work/clinical-slides.webp",
+      "slide_count": 10,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/clinical.webp",
+      "cover_ratio": 0.708,
+      "hero_caption": "Medical · English edition",
+      "hero_order": 10
+    },
+    {
+      "title": "The Lost Letter Project",
+      "id": "lost-letter",
+      "category": "Children's mystery",
+      "description": "Interior formatting and cover design",
+      "filters": [
+        "fiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/lost-letter-thumb.webp",
+      "pdf": "/case-studies/the-lost-letter-project-case-study.pdf",
+      "slides_strip": "/assets/work/lost-letter-slides.webp",
+      "slide_count": 9,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/lost-letter.webp",
+      "cover_ratio": 0.656,
+      "hero_caption": "Children's mystery · Cover & interior",
+      "hero_order": 7
+    },
+    {
+      "title": "Truth in the Era of AI",
+      "id": "truth-ai",
+      "category": "Nonfiction",
+      "description": "Interior formatting and cover design",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/truth-ai-thumb.webp",
+      "pdf": "/case-studies/truth-in-the-era-of-ai-case-study.pdf",
+      "slides_strip": "/assets/work/truth-ai-slides.webp",
+      "slide_count": 9,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/truth-ai.webp",
+      "cover_ratio": 0.667,
+      "hero_caption": "Nonfiction · Cover & interior",
+      "hero_order": 9
+    },
+    {
+      "title": "Silk & Sunshine",
+      "id": "silk",
+      "category": "Lifestyle guide",
+      "description": "Interior formatting and cover design",
+      "filters": [
+        "guide"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/silk-thumb.webp",
+      "pdf": "/case-studies/silk-and-sunshine-case-study.pdf",
+      "slides_strip": "/assets/work/silk-slides.webp",
+      "slide_count": 9,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/silk.webp",
+      "cover_ratio": 0.667,
+      "hero_caption": "Lifestyle guide · Cover & interior",
+      "hero_order": 8
+    },
+    {
+      "title": "Beauty Blueprint Workbook",
+      "id": "beauty",
+      "category": "Workbook",
+      "description": "Interior formatting and cover design",
+      "filters": [
+        "workbook"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/beauty-thumb.webp",
+      "pdf": "/case-studies/beauty-blueprint-workbook-case-study.pdf",
+      "slides_strip": "/assets/work/beauty-slides.webp",
+      "slide_count": 9,
+      "slides": [],
+      "show_in_hero": true,
+      "cover": "/assets/covers/beauty.webp",
+      "cover_ratio": 0.773,
+      "hero_caption": "Workbook · Cover & interior",
+      "hero_order": 11
+    },
+    {
+      "title": "Healing From Past Trauma",
+      "id": "healing",
+      "category": "Self-help workbook",
+      "description": "Interior and cover design",
+      "filters": [
+        "workbook",
+        "nonfiction"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/healing-thumb.webp",
+      "pdf": "/case-studies/healing-from-past-trauma-case-study.pdf",
+      "slides_strip": "/assets/work/healing-slides.webp",
+      "slide_count": 8,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Daily Steps to Growth",
+      "id": "daily",
+      "category": "Workbook",
+      "description": "Interior and cover design",
+      "filters": [
+        "workbook"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/daily-thumb.webp",
+      "pdf": "/case-studies/daily-steps-to-growth-case-study.pdf",
+      "slides_strip": "/assets/work/daily-slides.webp",
+      "slide_count": 8,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Craft Your Practice",
+      "id": "craft",
+      "category": "Professional workbook",
+      "description": "Interior and cover design",
+      "filters": [
+        "workbook"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/craft-thumb.webp",
+      "pdf": "/case-studies/craft-your-practice-case-study.pdf",
+      "slides_strip": "/assets/work/craft-slides.webp",
+      "slide_count": 8,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Nourish Naturally",
+      "id": "nourish",
+      "category": "Cookbook",
+      "description": "Interior and cover design",
+      "filters": [
+        "guide"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/nourish-thumb.webp",
+      "pdf": "/case-studies/nourish-naturally-case-study.pdf",
+      "slides_strip": "/assets/work/nourish-slides.webp",
+      "slide_count": 7,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "The Healthy Life Kitchen",
+      "id": "hlk",
+      "category": "Cookbook",
+      "description": "Interior and cover design",
+      "filters": [
+        "guide"
+      ],
+      "collaboration": false,
+      "new": false,
+      "thumbnail": "/assets/work/hlk-thumb.webp",
+      "pdf": "/case-studies/the-healthy-life-kitchen-case-study.pdf",
+      "slides_strip": "/assets/work/hlk-slides.webp",
+      "slide_count": 8,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Moving to Spain With Children",
+      "id": "spain",
+      "category": "Relocation guide",
+      "description": "Interior formatting · collaboration",
+      "filters": [
+        "guide"
+      ],
+      "collaboration": true,
+      "new": false,
+      "thumbnail": "/assets/work/spain-thumb.webp",
+      "pdf": "/case-studies/moving-to-spain-case-study-interior.pdf",
+      "slides_strip": "/assets/work/spain-slides.webp",
+      "slide_count": 7,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Judge Not",
+      "id": "judge-not",
+      "category": "Christian nonfiction",
+      "description": "Interior formatting · collaboration",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": true,
+      "new": false,
+      "thumbnail": "/assets/work/judge-not-thumb.webp",
+      "pdf": "/case-studies/judge-not-case-study-interior.pdf",
+      "slides_strip": "/assets/work/judge-not-slides.webp",
+      "slide_count": 6,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Foundations",
+      "id": "foundations",
+      "category": "Christian living",
+      "description": "Interior formatting · collaboration",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": true,
+      "new": false,
+      "thumbnail": "/assets/work/foundations-thumb.webp",
+      "pdf": "/case-studies/foundations-case-study-interior.pdf",
+      "slides_strip": "/assets/work/foundations-slides.webp",
+      "slide_count": 6,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Therapy Changed My Suicidal Thoughts to Self-Love",
+      "id": "therapy",
+      "category": "Memoir",
+      "description": "Interior formatting · collaboration",
+      "filters": [
+        "nonfiction"
+      ],
+      "collaboration": true,
+      "new": false,
+      "thumbnail": "/assets/work/therapy-thumb.webp",
+      "pdf": "/case-studies/therapy-changed-case-study-interior.pdf",
+      "slides_strip": "/assets/work/therapy-slides.webp",
+      "slide_count": 7,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    },
+    {
+      "title": "Come Forth",
+      "id": "come-forth",
+      "category": "Epic fantasy",
+      "description": "Interior formatting · collaboration",
+      "filters": [
+        "fiction"
+      ],
+      "collaboration": true,
+      "new": false,
+      "thumbnail": "/assets/work/come-forth-thumb.webp",
+      "pdf": "/case-studies/come-forth-case-study-interior.pdf",
+      "slides_strip": "/assets/work/come-forth-slides.webp",
+      "slide_count": 6,
+      "slides": [],
+      "show_in_hero": false,
+      "cover": "",
+      "cover_ratio": 0.667,
+      "hero_caption": "",
+      "hero_order": 0
+    }
+  ]
+}

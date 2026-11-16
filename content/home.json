@@ -1,0 +1,166 @@
+{
+  "hero": {
+    "eyebrow": "Book publishing specialist",
+    "title": "Your book,\n*publication‑ready*\nand beautiful.",
+    "lead": "I edit, format, translate and design covers for independent authors, so your paperback, hardcover and ebook look professionally published and pass Amazon KDP and IngramSpark checks the first time.",
+    "button_primary": "Get a free quote",
+    "button_secondary": "See my work",
+    "proof": [
+      "**50+** books formatted",
+      "★★★★★ client reviews",
+      "Print & ebook"
+    ]
+  },
+  "platforms": {
+    "label": "Files prepared to the specs of",
+    "items": [
+      "Amazon KDP",
+      "Kindle",
+      "IngramSpark",
+      "Apple Books",
+      "Barnes & Noble Press",
+      "Kobo",
+      "Lulu",
+      "Draft2Digital"
+    ]
+  },
+  "services_section": {
+    "eyebrow": "What I do",
+    "title": "Everything your manuscript needs *before* it meets readers.",
+    "subtitle": "From the first proofread to the cover and the final print-ready file, so you can publish with confidence."
+  },
+  "compare": {
+    "eyebrow": "See the difference",
+    "title": "Same page. *Before* and after.",
+    "text": "Drag the handle. On the left, the text as a rough manuscript: typewriter font, mixed heading styles, no indents. On the right, the same page after formatting: book typography, indented paragraphs, one heading style and proper page numbers.",
+    "credit": "Moving to Spain With Children by Lisa Sadleir · interior formatting, in collaboration with Olamilekan Waliu Publishing House.",
+    "before_image": "/assets/misc/spain-before.webp",
+    "after_image": "/assets/misc/spain-after.webp"
+  },
+  "work_section": {
+    "eyebrow": "Portfolio",
+    "title": "Real books. *Real* case studies.",
+    "subtitle": "Open any project to flip through the full case study, or download the PDF."
+  },
+  "about": {
+    "eyebrow": "About me",
+    "hello": "Hi, I'm Khadijat",
+    "role": "Formatting · Editing · Cover design · Translation",
+    "paragraphs": [
+      "I help independent authors turn finished manuscripts into polished, professional, publication-ready books. Some are first-time authors holding their very first proof copy; others are established writers who simply need a reliable pair of hands before launch day.",
+      "My focus is nonfiction, self-help and personal development, children's books, workbooks, journals, educational materials and practical guides. I also take on fiction and other genres when the manuscript is a good fit.",
+      "Every book gets the same care: clean typography, consistent styles, and files that meet the platform's requirements, so nothing stands between your words and your readers."
+    ],
+    "photo": "/assets/misc/khadijat.webp",
+    "badge_number": "50+",
+    "badge_text": "books\nformatted",
+    "counters": [
+      {
+        "number": 50,
+        "suffix": "+",
+        "decimals": 0,
+        "label": "Books formatted",
+        "auto_case_studies": false
+      },
+      {
+        "number": 0,
+        "suffix": "",
+        "decimals": 0,
+        "label": "Published case studies",
+        "auto_case_studies": true
+      },
+      {
+        "number": 5,
+        "suffix": "",
+        "decimals": 1,
+        "label": "Star rating on every review",
+        "auto_case_studies": false
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "How it works",
+    "title": "Four simple steps to a *ready-to-publish* book.",
+    "steps": [
+      {
+        "title": "Send your manuscript",
+        "text": "Share your Word or Google Docs file, your trim size, the formats you need and your launch date."
+      },
+      {
+        "title": "Get a clear quote",
+        "text": "I review the manuscript and send a quote and a timeline for the services your book needs."
+      },
+      {
+        "title": "Edit, format, review",
+        "text": "I polish and lay out your book, then send proofs so you can review every page and request changes."
+      },
+      {
+        "title": "Publish with confidence",
+        "text": "You receive final print PDFs and ebook files, ready to upload to KDP, IngramSpark and beyond."
+      }
+    ]
+  },
+  "reviews_section": {
+    "eyebrow": "Client reviews",
+    "title": "Kind words from *authors* I've worked with.",
+    "subtitle": "Real 5-star reviews from my Fiverr clients.",
+    "more_link_text": "Read all my reviews on Fiverr ↗"
+  },
+  "leave_review": {
+    "eyebrow": "Share your feedback",
+    "title": "Worked with me? *Leave a review.*",
+    "subtitle": "Your words help other authors decide with confidence. Tell me how your project went, and I'll add your review to this page once I've confirmed it.",
+    "points": [
+      "Takes less than a minute",
+      "Your review is checked before it appears, so every review here is from a real client"
+    ]
+  },
+  "faq_section": {
+    "eyebrow": "Questions",
+    "title": "Good to *know*.",
+    "subtitle": "Can't find your answer? Send me a message, I reply personally."
+  },
+  "contact": {
+    "eyebrow": "Let's get in touch",
+    "title": "Have a book\n*in mind?*",
+    "subtitle": "Tell me about your project and I'll reply with a clear quote. Free consultation, no commitment.",
+    "rows": [
+      {
+        "label": "Email",
+        "value": "khadijahismail525@gmail.com",
+        "link": "mailto:khadijahismail525@gmail.com"
+      },
+      {
+        "label": "Free consultation",
+        "value": "Book a 15-minute call →",
+        "link": "https://calendly.com/khadijati889/15min"
+      },
+      {
+        "label": "Flexible ordering & payment",
+        "value": "Order and pay your way: Fiverr, Upwork or directly with me. All currencies accepted.",
+        "link": ""
+      },
+      {
+        "label": "Response time",
+        "value": "Within 24 hours",
+        "link": ""
+      },
+      {
+        "label": "Services",
+        "value": "Formatting · Proofreading · Copy editing · Cover design · Translation",
+        "link": ""
+      },
+      {
+        "label": "Available for",
+        "value": "Authors worldwide, working remotely",
+        "link": ""
+      }
+    ]
+  },
+  "final_cta": {
+    "eyebrow": "Let's get started",
+    "title": "Ready to turn your manuscript into a *book you're proud of?*",
+    "subtitle": "Send me your manuscript and I'll come back with a clear quote and timeline. Free consultation, no commitment.",
+    "note": "Free 15-minute call · Paperback, hardcover and ebook"
+  }
+}

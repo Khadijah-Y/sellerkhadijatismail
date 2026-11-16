@@ -1,0 +1,66 @@
+{
+  "reviews": [
+    {
+      "quote": "Very professional book formatting service. The interior layout looks fantastic and reads smoothly on both Kindle and print formats. The attention to detail really stood out. If you need someone who understands book publishing requirements, this is the right person.",
+      "name": "arianatom451",
+      "details": "Repeat client · Fiverr · March 2026",
+      "tags": "",
+      "featured": true,
+      "rating": 5
+    },
+    {
+      "quote": "Excellent work by Khadijat – quick, efficient and concise – will 100% use Khadijat again.",
+      "name": "Allan Cook",
+      "details": "Fiverr · November 2025",
+      "tags": "Deep understanding · Delivery time · Politeness",
+      "featured": false,
+      "rating": 5
+    },
+    {
+      "quote": "You're the best Khadijat 👌",
+      "name": "Avelor",
+      "details": "Repeat client · Fiverr · March 2026",
+      "tags": "",
+      "featured": false,
+      "rating": 5
+    },
+    {
+      "quote": "Great experience with the seller 🥰",
+      "name": "Avelor",
+      "details": "Repeat client · Fiverr · March 2026",
+      "tags": "",
+      "featured": false,
+      "rating": 5
+    },
+    {
+      "quote": "I enjoyed her service.",
+      "name": "arianatom451",
+      "details": "Repeat client · Fiverr · March 2026",
+      "tags": "",
+      "featured": false,
+      "rating": 5
+    }
+  ],
+  "popups": [
+    {
+      "quote": "Very professional book formatting service. The interior layout looks fantastic and reads smoothly on both Kindle and print formats.",
+      "name": "arianatom451 · Repeat client"
+    },
+    {
+      "quote": "Excellent work by Khadijat – quick, efficient and concise – will 100% use Khadijat again.",
+      "name": "Allan Cook"
+    },
+    {
+      "quote": "You're the best Khadijat 👌",
+      "name": "Avelor · Repeat client"
+    },
+    {
+      "quote": "The attention to detail really stood out. If you need someone who understands book publishing requirements, this is the right person.",
+      "name": "arianatom451 · Repeat client"
+    },
+    {
+      "quote": "Great experience with the seller 🥰",
+      "name": "Avelor · Repeat client"
+    }
+  ]
+}
